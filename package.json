@@ -1,5 +1,5 @@
 {
-  "name": "react-redux-typescript",
+  "name": "blog.voidpixel.net",
   "version": "0.0.0",
   "description": "",
   "main": "src/index.tsx",
@@ -15,11 +15,14 @@
   "license": "MIT",
   "dependencies": {
     "axios": "^0.19.2",
+    "dayjs": "^1.9.5",
     "immer": "^7.0.7",
     "moment": "^2.27.0",
     "node-sass": "^4.14.1",
     "react": "^16.13.1",
+    "react-cookie": "^4.0.3",
     "react-dom": "^16.13.1",
+    "react-markdown": "^5.0.2",
     "react-redux": "^7.2.1",
     "react-router-dom": "^5.2.0",
     "react-scripts": "3.4.1",

@@ -1,30 +1,33 @@
 import * as React from 'react'
 import {useDispatch, useSelector} from "react-redux";
-import {SetTest} from "../store/example/dispatchers";
-import {DefaultState} from "../store";
-import {ExampleState} from "../store/example";
 import {useEffect} from "react";
-import Button from "./button/Button.component";
+import {FetchPosts} from "../store/posts/dispatchers";
+import {BrowserRouter as Router} from "react-router-dom";
+import {Header} from "./header/Header.component";
+import {Routing} from "./routing/Routing.component";
+import {DefaultState} from "../store";
+import {PostsState} from "../store/posts";
 
 const App = () => {
 
     const dispatch = useDispatch();
-    const exampleState = useSelector<DefaultState, ExampleState>(state => state.example);
 
+    const postsState = useSelector<DefaultState, PostsState>(state => state.postsState);
 
     useEffect(() => {
-        console.log(exampleState)
-    }, [exampleState])
+        if(postsState.postList.length > 0)
+            return;
 
-    const _onClick = () => {
-        dispatch(SetTest('un dos tres'))
-    }
+        (async () => {
+            dispatch(await FetchPosts())
+        })();
+    }, [dispatch, postsState]);
 
     return (
-        <div>
-            <Button onClick={_onClick}>Dispatch</Button>
-            <h1>{exampleState.test}</h1>
-        </div>
+        <Router>
+            <Header/>
+            <Routing/>
+        </Router>
     );
 }
 

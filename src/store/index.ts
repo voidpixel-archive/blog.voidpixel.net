@@ -1,10 +1,17 @@
 import { combineReducers } from 'redux';
-import {exampleReducer, ExampleState} from "./example";
+import {postsReducer, PostsActions, PostsState} from "./posts";
+import {ConfigActions, configReducer, ConfigState} from "./config";
 
 export interface DefaultState {
-    example: ExampleState
+    postsState: PostsState
+    configState: ConfigState
 }
 
 export const rootReducer = combineReducers({
-    example: exampleReducer
+    postsState: postsReducer,
+    configState: configReducer
 })
+
+export type Actions =
+    | PostsActions
+    | ConfigActions
