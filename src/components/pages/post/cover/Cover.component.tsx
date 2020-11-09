@@ -20,7 +20,7 @@ export const Cover: React.FunctionComponent<IProps> = (
         onClick={() => onClick && onClick(post)}
         key={post.id}
     >
-        <img src={post.cover} style={{ maxWidth: '300px' }} />
+        <img alt={post.post[language].title} src={post.cover} style={{ maxWidth: '300px' }} />
         <h4>{post.post[language].title}</h4>
         <h5>{post.author} - {dayjs(post.date).format('HH:mm D/MM/YYYY')}</h5>
     </div>

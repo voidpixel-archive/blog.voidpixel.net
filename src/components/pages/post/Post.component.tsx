@@ -20,7 +20,6 @@ export const Post: React.FunctionComponent<RouteComponentProps<Params>> = (
 
     const history = useHistory();
 
-
     const { language } = useSelector<DefaultState, ConfigState>(state => state.configState);
     const { postList } = useSelector<DefaultState, PostsState>(state => state.postsState);
 

@@ -7,7 +7,10 @@ import thunk from 'redux-thunk';
 import {rootReducer} from "./store";
 import {BrowserRouter} from "react-router-dom";
 
+import './i18n';
+
 const store = createStore(rootReducer, applyMiddleware(thunk));
+
 ReactDOM.render(
     <Provider store={store}>
         <BrowserRouter>
