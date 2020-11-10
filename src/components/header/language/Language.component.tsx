@@ -6,10 +6,12 @@ import {DefaultState} from "../../../store";
 import {ConfigState, Language as TLanguage} from "../../../store/config";
 import { useTranslation } from 'react-i18next';
 
+import style from './Language.module.scss';
+
 export const Language: React.FunctionComponent = () => {
 
     const dispatch = useDispatch();
-    const { i18n } = useTranslation();
+    const { i18n, t } = useTranslation();
 
     const configState = useSelector<DefaultState, ConfigState>(state => state.configState);
 
@@ -32,13 +34,24 @@ export const Language: React.FunctionComponent = () => {
     const onClick = (language: TLanguage) => setLanguage(language);
 
     return (
-        <div>
-            <button
+        <div
+            className={style.languages}
+        >
+            <label
                 onClick={() => onClick(TLanguage.EN)}
-            >en</button>
-            <button
+            >
+                {t('english')}
+            </label>
+            <label
                 onClick={() => onClick(TLanguage.ES)}
-            >es</button>
+            >
+                {t('spanish')}
+            </label>
+            <label
+                onClick={() => onClick(TLanguage.CAT)}
+            >
+                {t('catalan')}
+            </label>
         </div>
     )
 }

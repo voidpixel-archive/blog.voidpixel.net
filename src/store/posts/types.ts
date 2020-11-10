@@ -24,7 +24,8 @@ export type Post = {
     cover: string,
     post: {
         [Language.EN]: PostTranslation,
-        [Language.ES]: PostTranslation
+        [Language.ES]: PostTranslation,
+        [Language.CAT]: PostTranslation
     }
 }
 

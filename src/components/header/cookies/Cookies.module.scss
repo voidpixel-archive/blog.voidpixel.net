@@ -1,0 +1,17 @@
+
+$cookieColor: #F4A460;
+
+.cookies {
+  color: $cookieColor;
+  & > * {
+    margin-right: .5em;
+  }
+  a {
+    &:link, &:visited {
+      color: $cookieColor;
+    }
+  }
+  .accept {
+    cursor: pointer;
+  }
+}

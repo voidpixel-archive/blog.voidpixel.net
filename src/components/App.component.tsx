@@ -8,6 +8,9 @@ import {Routing} from "./routing/Routing.component";
 import {DefaultState} from "../store";
 import {PostsState} from "../store/posts";
 
+import commonStyle from './styles/Common.module.scss';
+import './App.module.scss';
+
 const App = () => {
 
     const dispatch = useDispatch();
@@ -25,8 +28,10 @@ const App = () => {
 
     return (
         <Router>
-            <Header/>
-            <Routing/>
+            <div className={commonStyle.container}>
+                <Header/>
+                <Routing/>
+            </div>
         </Router>
     );
 }

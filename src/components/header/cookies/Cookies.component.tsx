@@ -6,6 +6,8 @@ import {DefaultState} from "../../../store";
 import {ConfigState} from "../../../store/config";
 import {useTranslation} from "react-i18next";
 
+import style from './Cookies.module.scss';
+
 export const Cookies: React.FunctionComponent = () => {
 
     const { t } = useTranslation();
@@ -36,14 +38,23 @@ export const Cookies: React.FunctionComponent = () => {
         })
     }
 
-    return (
-        <div>
-            {configState.cookies ? 'cookies' : 'no-cookies'}
-            <p/>
-            {isGoogleAnalyticsRunning ? 'ga!' : 'no-ga'}
-            <button
-                onClick={onAcceptCookies}
-            >{t('accept-cookies')}</button>
-        </div>
-    )
+    const gaURL = 'https://developers.google.com/analytics/devguides/collection/analyticsjs/cookie-usage';
+    const gaComponent =
+        <a
+            target='_blank'
+            rel="noopener noreferrer"
+            href={gaURL}
+        >Google Analytics</a>
+    return configState.cookies
+        ? <></>
+        : (
+            <div className={style.cookies}>
+                <label>{t('This website needs')} {gaComponent} {t('cookies')}</label>
+                <i className="fas fa-cookie-bite"/>
+                <label
+                    className={style.accept}
+                    onClick={onAcceptCookies}
+                >{t('Accept')}</label>
+            </div>
+        );
 }

@@ -18,5 +18,6 @@ export interface ConfigState {
 
 export enum Language {
     ES = 'es',
-    EN = 'en'
+    EN = 'en',
+    CAT = 'cat'
 }

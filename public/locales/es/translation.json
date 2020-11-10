@@ -1,3 +1,8 @@
 {
-  "accept-cookies": "Aceptar cookies"
+  "Accept": "Aceptar",
+  "cookies": "",
+  "english": "inglés",
+  "spanish": "español",
+  "catalan": "catalan",
+  "This website needs": "Esta web necesita las cookies de"
 }
