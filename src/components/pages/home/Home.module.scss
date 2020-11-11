@@ -1,0 +1,30 @@
+.home {
+  .posts {
+    .cover:not(:last-child) {
+      margin-bottom: 1em;
+    }
+  }
+  .pagination {
+    display: grid;
+    grid-template-columns: fit-content(100%) auto fit-content(100%);
+    width: 100%;
+    margin-top: .5em;
+
+    .index {
+      text-align: center;
+      line-height: 2em;
+    }
+
+    .button {
+      font-size: 1.5em;
+      user-select: none;
+      cursor: pointer;
+      color: #666666;
+
+      &.disabled {
+        color: white;
+        cursor: default;
+      }
+    }
+  }
+}

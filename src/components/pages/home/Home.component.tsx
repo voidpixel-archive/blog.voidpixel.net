@@ -1,22 +1,50 @@
 import * as React from "react";
-import {useState} from "react";
+import {useEffect, useState} from "react";
 import {useSelector} from "react-redux";
 import {DefaultState} from "../../../store";
 import {Post, PostsState} from "../../../store/posts";
 import {useHistory} from "react-router-dom";
 import {ConfigState} from "../../../store/config";
 import {Cover} from "../post/cover/Cover.component";
+import {RouteComponentProps} from "react-router";
 
-export const Home: React.FunctionComponent = () => {
+import style from './Home.module.scss';
+
+type Params = {
+    pageIndex?: string;
+}
+
+export const Home: React.FunctionComponent<RouteComponentProps<Params>> = (
+    props: RouteComponentProps<Params>
+) => {
+    const { pageIndex } = props.match.params;
+    let initialPageIndex = parseInt(pageIndex || '');
 
     const history = useHistory();
 
-    const postsPerPage = 2;
+    const postsPerPage = 10;
 
-    const [index, setIndex] = useState<number>(0);
+    const [index, setIndex] = useState<number>(isNaN(initialPageIndex) ? 0 : initialPageIndex);
 
     const { language } = useSelector<DefaultState, ConfigState>(state => state.configState);
     const { postList } = useSelector<DefaultState, PostsState>(state => state.postsState);
+
+    const pagesCount = Math.ceil(postList.length / postsPerPage);
+    const areOlderPages = !(index === pagesCount - 1);
+    const areNewerPages = !(index === 0);
+    const areAnyPagination = areOlderPages || areNewerPages;
+
+    useEffect(() => {
+        const targetPathName = index === 0 ? '/' : `/page/${index}`;
+        if(props.location.pathname === targetPathName) return;
+        history.push(targetPathName);
+    }, [index, history, props]);
+
+    useEffect(() => {
+        if(postList.length === 0) return;
+        if(initialPageIndex >= pagesCount)
+            history.push(`/404`);
+    }, [initialPageIndex, pagesCount, postList]);
 
     const onClick = (post: Post) => {
         history.push(`/post/${post.id}`);
@@ -34,34 +62,31 @@ export const Home: React.FunctionComponent = () => {
                 onClick={onClick}
                 post={post}
                 language={language}
+                isCover={true}
+                className={style.cover}
             />
-        ))
-
-    const areOlderPages = !(index === Math.trunc(postList.length / postsPerPage) - 1);
-    const areNewerPages = !(index === 0);
+        ));
 
     return (
-        <div>
-            home
-            <div>
+        <div className={style.home}>
+            <div className={style.posts}>
                 {postIdListMap}
             </div>
-            <div>
-                {
-                    areNewerPages && (
-                        <button
-                            onClick={onPageNewer}
-                        >newer</button>
-                    )
-                }
-                {
-                    areOlderPages && (
-                        <button
-                            onClick={onPageOlder}
-                        >older</button>
-                    )
-                }
-            </div>
+            {
+                areAnyPagination && (
+                    <div className={style.pagination}>
+                        <div
+                            className={`${style.button} ${areOlderPages ? '' : style.disabled}`}
+                            onClick={areOlderPages ? onPageOlder : undefined}
+                        ><i className="fas fa-angle-left"/></div>
+                        <div className={style.index}>{index}</div>
+                        <div
+                            className={`${style.button} ${areNewerPages ? '' : style.disabled}`}
+                            onClick={areNewerPages ? onPageNewer : undefined}
+                        ><i className="fas fa-angle-right"/></div>
+                    </div>
+                )
+            }
         </div>
     )
 }

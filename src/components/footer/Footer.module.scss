@@ -1,0 +1,22 @@
+
+.footer {
+  padding: 1em 0;
+  color: #cccccc;
+  gap: 1em;
+
+  label {
+    i {
+      font-size: .8em;
+    }
+  }
+
+  a {
+    float: right;
+    cursor: pointer;
+    color: #cccccc;
+    margin-left: .75em;
+    i {
+      font-size: 1.25em;
+    }
+  }
+}

@@ -1,17 +1,35 @@
 
-$cookieColor: #F4A460;
 
 .cookies {
-  color: $cookieColor;
+  color: white;
+  background-color: #270D0B;
+  padding: .5em 2em;
+  margin-bottom: .5em;
+  text-align: center;
+
+  label {
+    line-height: 1.5em;
+  }
+
+  i {
+    line-height: 1.5em;
+    color: #BD8C61;
+  }
+
   & > * {
     margin-right: .5em;
   }
   a {
     &:link, &:visited {
-      color: $cookieColor;
+      color: white;
     }
   }
   .accept {
+    display: inline-table;
+    margin-left: .5em;
+    color: #270D0B;
+    background-color: white;
+    padding: 0 1em;
     cursor: pointer;
   }
 }

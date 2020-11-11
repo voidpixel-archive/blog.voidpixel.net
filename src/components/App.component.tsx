@@ -10,6 +10,7 @@ import {PostsState} from "../store/posts";
 
 import commonStyle from './styles/Common.module.scss';
 import './App.module.scss';
+import {Footer} from "./footer/Footer.component";
 
 const App = () => {
 
@@ -31,6 +32,7 @@ const App = () => {
             <div className={commonStyle.container}>
                 <Header/>
                 <Routing/>
+                <Footer/>
             </div>
         </Router>
     );

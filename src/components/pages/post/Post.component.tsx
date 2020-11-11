@@ -9,6 +9,8 @@ import ReactMarkdown from 'react-markdown'
 import {ConfigState} from "../../../store/config";
 import {Cover} from "./cover/Cover.component";
 
+import style from './Post.module.scss';
+
 type Params = {
     id: string;
 }
@@ -26,15 +28,33 @@ export const Post: React.FunctionComponent<RouteComponentProps<Params>> = (
     const post = postList.find(post => post.id === id);
 
     useEffect(() => {
+        window.scrollTo(window.scrollX, 0);
+    }, [id])
+
+    useEffect(() => {
         if(postList.length === 0)
             return;
         if(!post)
             return history.push('/404');
     }, [postList, history, post]);
 
+    const lastTwoPosts = [...postList]
+        .sort((a, b) => b.date - a.date)
+        .filter(_post => post && _post.id !== post.id)
+        .filter((_post, idx) => 2 > idx)
+        .map((post) => (
+            <Cover
+                key={post.id}
+                onClick={() => history.push(`/post/${post.id}`)}
+                post={post}
+                isCover={true}
+                language={language}
+            />
+        ));
+
     return (
         post ? (
-            <div>
+            <div className={style.post}>
                 <Cover
                     post={post}
                     language={language}
@@ -42,6 +62,13 @@ export const Post: React.FunctionComponent<RouteComponentProps<Params>> = (
                 <ReactMarkdown>
                     {post.post[language].content}
                 </ReactMarkdown>
+                {
+                    lastTwoPosts.length === 2 && (
+                        <div className={style.lastTwoPosts}>
+                            {lastTwoPosts}
+                        </div>
+                    )
+                }
             </div>
         ) : <></>
     )

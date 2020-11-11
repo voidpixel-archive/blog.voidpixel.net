@@ -18,7 +18,9 @@ export const Header: React.FunctionComponent = () => {
             <div
                 className={style.title}
                 onClick={onClickTitle}
-            > voidpixel blog
+            >
+                <i className="fas fa-code" />
+                voidpixel blog
             </div>
             <div
                 className={style.subHeader}

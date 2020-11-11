@@ -12,6 +12,11 @@ export const Routing: React.FunctionComponent = () => (
             component={Home}
         />
         <Route
+            path="/page/:pageIndex"
+            exact={true}
+            component={Home}
+        />
+        <Route
             path="/post/:id"
             exact={true}
             component={Post}

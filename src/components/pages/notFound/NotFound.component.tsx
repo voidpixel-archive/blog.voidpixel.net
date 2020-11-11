@@ -15,8 +15,11 @@ export const NotFound: React.FunctionComponent<RouteComponentProps> = (
     }, [props, history])
 
     return (
-        <h1>
-            404
-        </h1>
+        <div>
+            <h1>Ooops...</h1>
+            <h4>
+                I don't know what are you looking for, but the page does not exist.
+            </h4>
+        </div>
     )
 }

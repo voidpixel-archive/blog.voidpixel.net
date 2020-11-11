@@ -1,15 +1,19 @@
 
 .header {
-  padding: .5em 1em;
+  padding-bottom: .5em;
 
   .title {
     padding: .5em 0;
     font-size: 1.5em;
     cursor: pointer;
     user-select: none;
+    i {
+      font-size: .75em;
+      margin-right: .5em;
+    }
   }
   .subHeader {
-    color: dimgray;
+    color: #666666;
     font-weight: 10;
 
     & > div {

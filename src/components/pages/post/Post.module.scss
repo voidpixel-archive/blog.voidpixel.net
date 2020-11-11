@@ -1,0 +1,9 @@
+
+.post {
+  .lastTwoPosts {
+    display: grid;
+    grid-template-columns: calc(50% - .5em) calc(50% - .5em);
+    grid-column-gap: 1em;
+    font-size: .6em;
+  }
+}

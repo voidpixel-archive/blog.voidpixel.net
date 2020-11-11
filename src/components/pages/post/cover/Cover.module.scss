@@ -1,0 +1,45 @@
+
+.cover {
+  &.pointer {
+    cursor: pointer;
+    user-select: none;
+  }
+  &.isCover {
+    background-color: #eee;
+    .title {
+      padding: 0 .5em;
+    }
+    .subTitle {
+      padding: .5em 1.25em .5em 1.25em;
+      margin-bottom: 0;
+    }
+  }
+  &:not(.isCover) {
+    .subTitle {
+      margin-top: .5em;
+      margin-bottom: .5em;
+    }
+  }
+  .image {
+    width: 100%;
+  }
+  .title {
+    color: #222222;
+    font-size: 2.5em;
+    word-break: break-all;
+  }
+  .subTitle {
+    display: block;
+    font-size: 1em;
+    text-transform: uppercase;
+    font-weight: bolder;
+
+    .date {
+      color: #666666;
+      float: right;
+    }
+    .author {
+      color: #666666;
+    }
+  }
+}
