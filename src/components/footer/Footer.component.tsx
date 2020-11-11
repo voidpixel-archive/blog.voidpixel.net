@@ -26,5 +26,11 @@ export const Footer: React.FunctionComponent = () => (
             rel="noopener noreferrer"
             title='discord/Xt9CCeJ'
         ><i className="fab fa-discord"/></a>
+        <a
+            href='https://github.com/voidpixel'
+            target='_blank'
+            rel="noopener noreferrer"
+            title='github/voidpixel'
+        ><i className="fab fa-github"/></a>
     </div>
 )
