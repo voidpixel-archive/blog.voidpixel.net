@@ -59,7 +59,7 @@ export const Post: React.FunctionComponent<RouteComponentProps<Params>> = (
                     post={post}
                     language={language}
                 />
-                <ReactMarkdown>
+                <ReactMarkdown className={style.content}>
                     {post.post[language].content}
                 </ReactMarkdown>
                 {
