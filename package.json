@@ -14,6 +14,7 @@
   "author": "darkaqua",
   "license": "MIT",
   "dependencies": {
+    "@types/react-helmet": "^6.1.0",
     "axios": "^0.19.2",
     "dayjs": "^1.9.5",
     "i18next": "^19.8.3",
@@ -24,6 +25,7 @@
     "react": "^16.13.1",
     "react-cookie": "^4.0.3",
     "react-dom": "^16.13.1",
+    "react-helmet": "^6.1.0",
     "react-i18next": "^11.7.3",
     "react-markdown": "^5.0.2",
     "react-redux": "^7.2.1",

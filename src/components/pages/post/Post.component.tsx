@@ -8,6 +8,7 @@ import {useHistory} from "react-router-dom";
 import ReactMarkdown from 'react-markdown'
 import {ConfigState} from "../../../store/config";
 import {Cover} from "./cover/Cover.component";
+import { Helmet } from 'react-helmet'
 
 import style from './Post.module.scss';
 
@@ -54,22 +55,28 @@ export const Post: React.FunctionComponent<RouteComponentProps<Params>> = (
 
     return (
         post ? (
-            <div className={style.post}>
-                <Cover
-                    post={post}
-                    language={language}
-                />
-                <ReactMarkdown className={style.content}>
-                    {post.post[language].content}
-                </ReactMarkdown>
-                {
-                    lastTwoPosts.length === 2 && (
-                        <div className={style.lastTwoPosts}>
-                            {lastTwoPosts}
-                        </div>
-                    )
-                }
-            </div>
+            
+            <>
+                <Helmet>
+                    <title>{ post.post[language].title } / voidpixel blog / {language}</title>
+                </Helmet>
+                <div className={style.post}>
+                    <Cover
+                        post={post}
+                        language={language}
+                    />
+                    <ReactMarkdown className={style.content}>
+                        {post.post[language].content}
+                    </ReactMarkdown>
+                    {
+                        lastTwoPosts.length === 2 && (
+                            <div className={style.lastTwoPosts}>
+                                {lastTwoPosts}
+                            </div>
+                        )
+                    }
+                </div>
+                </>
         ) : <></>
     )
 }

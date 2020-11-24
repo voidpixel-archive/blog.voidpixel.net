@@ -7,6 +7,7 @@ import {useHistory} from "react-router-dom";
 import {ConfigState} from "../../../store/config";
 import {Cover} from "../post/cover/Cover.component";
 import {RouteComponentProps} from "react-router";
+import { Helmet } from 'react-helmet'
 
 import style from './Home.module.scss';
 
@@ -68,25 +69,30 @@ export const Home: React.FunctionComponent<RouteComponentProps<Params>> = (
         ));
 
     return (
-        <div className={style.home}>
-            <div className={style.posts}>
-                {postIdListMap}
+        <>
+            <Helmet>
+                <title>Home / voidpixel blog</title>
+            </Helmet>
+            <div className={style.home}>
+                <div className={style.posts}>
+                    {postIdListMap}
+                </div>
+                {
+                    areAnyPagination && (
+                        <div className={style.pagination}>
+                            <div
+                                className={`${style.button} ${areOlderPages ? '' : style.disabled}`}
+                                onClick={areOlderPages ? onPageOlder : undefined}
+                            ><i className="fas fa-angle-left"/></div>
+                            <div className={style.index}>{index}</div>
+                            <div
+                                className={`${style.button} ${areNewerPages ? '' : style.disabled}`}
+                                onClick={areNewerPages ? onPageNewer : undefined}
+                            ><i className="fas fa-angle-right"/></div>
+                        </div>
+                    )
+                }
             </div>
-            {
-                areAnyPagination && (
-                    <div className={style.pagination}>
-                        <div
-                            className={`${style.button} ${areOlderPages ? '' : style.disabled}`}
-                            onClick={areOlderPages ? onPageOlder : undefined}
-                        ><i className="fas fa-angle-left"/></div>
-                        <div className={style.index}>{index}</div>
-                        <div
-                            className={`${style.button} ${areNewerPages ? '' : style.disabled}`}
-                            onClick={areNewerPages ? onPageNewer : undefined}
-                        ><i className="fas fa-angle-right"/></div>
-                    </div>
-                )
-            }
-        </div>
+        </>
     )
 }

@@ -12,22 +12,24 @@ export const Header: React.FunctionComponent = () => {
     const onClickTitle = () => history.push('/');
 
     return (
-        <div
-            className={style.header}
-        >
+        <>
             <div
-                className={style.title}
-                onClick={onClickTitle}
+                className={style.header}
             >
-                <i className="fas fa-code" />
-                voidpixel blog
+                <div
+                    className={style.title}
+                    onClick={onClickTitle}
+                >
+                    <i className="fas fa-code" />
+                    voidpixel blog
+                </div>
+                <div
+                    className={style.subHeader}
+                >
+                    <Language/>
+                    <Cookies/>
+                </div>
             </div>
-            <div
-                className={style.subHeader}
-            >
-                <Language/>
-                <Cookies/>
-            </div>
-        </div>
+        </>
     )
 }

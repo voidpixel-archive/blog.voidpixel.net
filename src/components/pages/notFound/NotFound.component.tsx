@@ -2,6 +2,7 @@ import * as React from "react";
 import {RouteComponentProps} from "react-router";
 import {useEffect} from "react";
 import {useHistory} from "react-router-dom";
+import {Helmet} from "react-helmet";
 
 export const NotFound: React.FunctionComponent<RouteComponentProps> = (
     props: RouteComponentProps
@@ -15,11 +16,16 @@ export const NotFound: React.FunctionComponent<RouteComponentProps> = (
     }, [props, history])
 
     return (
-        <div>
-            <h1>Ooops...</h1>
-            <h4>
-                I don't know what are you looking for, but the page does not exist.
-            </h4>
-        </div>
+        <>
+            <Helmet>
+                <title>404 / voidpixel blog</title>
+            </Helmet>
+            <div>
+                <h1>Ooops...</h1>
+                <h4>
+                    I don't know what are you looking for, but the page does not exist.
+                </h4>
+            </div>
+        </>
     )
 }
