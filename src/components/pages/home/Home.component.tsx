@@ -44,7 +44,7 @@ export const Home: React.FunctionComponent<RouteComponentProps<Params>> = (
         if(postList.length === 0) return;
         if(initialPageIndex >= pagesCount)
             history.push(`/404`);
-    }, [initialPageIndex, pagesCount, postList]);
+    }, [initialPageIndex, pagesCount, postList, history]);
 
     const onClick = (post: Post) => {
         history.push(`/post/${post.id}`);
