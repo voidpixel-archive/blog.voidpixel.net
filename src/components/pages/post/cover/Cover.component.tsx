@@ -26,7 +26,7 @@ export const Cover: React.FunctionComponent<IProps> = (
     const { t } = useTranslation();
 
     const author = post.author;
-    const date = dayjs(post.date).format('D/MM/YYYY');
+    const date = dayjs(post.date).format('DD/MM/YYYY');
     const minutes = Math.trunc(readingTime(post.post[language].content).minutes);
 
     const title = (
